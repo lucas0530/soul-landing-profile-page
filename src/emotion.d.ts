@@ -5,6 +5,7 @@ declare module '@emotion/react' {
     colors: {
       black: string
       white: string
+      carrot: string
     }
   }
 }
