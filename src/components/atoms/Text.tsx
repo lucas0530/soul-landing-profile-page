@@ -1,10 +1,13 @@
 import React, { HTMLAttributes } from 'react'
 import { Span } from './Text.style'
 
-const Text = ({
-  children,
-  ...props
-}: React.PropsWithChildren<HTMLAttributes<HTMLSpanElement>>) => (
+export type TextProps = React.PropsWithChildren<
+  {
+    bold?: boolean
+  } & HTMLAttributes<HTMLSpanElement>
+>
+
+const Text = ({ children, ...props }: TextProps) => (
   <Span {...props}>{children}</Span>
 )
 
