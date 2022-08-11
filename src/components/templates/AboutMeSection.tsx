@@ -2,6 +2,10 @@ import Center from '@components/atoms/Center'
 import Text from '@components/atoms/Text'
 import { Section } from './IntroSection.style'
 import { motion } from 'framer-motion'
+import { useTheme } from '@emotion/react'
+import { forwardRef, ForwardRefRenderFunction } from 'react'
+import SectionTitle from '@components/organisms/SectionTitle'
+import { SectionMethodsType } from 'pages'
 
 const ABOUT_ME_FIELD = [
   { title: '이름', fields: ['최근원'] },
@@ -9,13 +13,23 @@ const ABOUT_ME_FIELD = [
   { title: '연락처', fields: ['010-4902-0651', 'chlrmsdnjs9862@gmail.com'] },
 ]
 
-const AboutMeSection = () => {
+type AboutMeSectionProps = {
+  sectionMethods: SectionMethodsType
+}
+
+const AboutMeSection: ForwardRefRenderFunction<
+  HTMLDivElement,
+  AboutMeSectionProps
+> = ({ sectionMethods }, ref) => {
+  const theme = useTheme()
+
   return (
     <Section
+      ref={ref}
       css={{
         justifyContent: 'center',
         alignItems: 'flex-start',
-        backgroundColor: 'white',
+        backgroundColor: theme.colors.white,
         padding: '6rem 2rem',
       }}
     >
@@ -25,30 +39,10 @@ const AboutMeSection = () => {
           flex: 1,
         }}
       >
-        <motion.div
-          initial={{ translateY: 0, opacity: 0 }}
-          whileInView={{
-            translateY: -20,
-            opacity: 1,
-          }}
-          transition={{
-            delay: 0.3,
-            x: { duration: 1 },
-            default: { ease: 'linear' },
-          }}
-        >
-          <Text
-            css={{
-              fontWeight: 'bold',
-              fontSize: '4rem',
-              borderBottomColor: '#cccccc',
-              borderBottomWidth: 2,
-              borderBottomStyle: 'solid',
-            }}
-          >
-            ABOUT ME
-          </Text>
-        </motion.div>
+        <SectionTitle
+          title="ABOUT ME"
+          onClickScrollClip={() => sectionMethods.scrollToSection(1)}
+        />
 
         <motion.div
           initial={{ translateY: 0, opacity: 0 }}
@@ -61,15 +55,24 @@ const AboutMeSection = () => {
             x: { duration: 1 },
             default: { ease: 'linear' },
           }}
+          viewport={{
+            once: true,
+          }}
           css={{
             display: 'flex',
             width: '100%',
             justifyContent: 'space-around',
             marginTop: '4rem',
+            gap: '3rem',
+            flexDirection: 'column',
+            '@media (min-width: 800px)': {
+              flexDirection: 'row',
+            },
           }}
         >
           {ABOUT_ME_FIELD.map(({ fields, title }) => (
             <div
+              key={title}
               css={{
                 display: 'flex',
                 alignItems: 'center',
@@ -90,8 +93,9 @@ const AboutMeSection = () => {
               </Text>
               {fields.map((field) => (
                 <Text
+                  key={field}
                   css={{
-                    fontSize: '1rem',
+                    fontSize: '1.25rem',
                   }}
                 >
                   {field}
@@ -105,4 +109,4 @@ const AboutMeSection = () => {
   )
 }
 
-export default AboutMeSection
+export default forwardRef(AboutMeSection)

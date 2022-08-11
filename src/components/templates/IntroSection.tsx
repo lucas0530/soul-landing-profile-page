@@ -2,9 +2,11 @@ import Center from '@components/atoms/Center'
 import Text from '@components/atoms/Text'
 import { useTheme } from '@emotion/react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { SectionMethodsType } from 'pages'
+import { forwardRef, ForwardRefRenderFunction, useEffect, useRef } from 'react'
 import { Section } from './IntroSection.style'
 
-const PAGE_HEIGHT = 4200
+const PAGE_HEIGHT = 4000
 const MOTION_OFFSET = {
   WELCOME_CONTAINER_SCALE: [0, 900],
   WELCOME_MAIN_TITLE_OPACITY: [700, 900],
@@ -42,6 +44,11 @@ const WelcomeFixedMotion = () => {
     [1, 0]
   )
 
+  /** scrollNav motion styles */
+  const scrollNavOpacity = useTransform(scrollY, (value) =>
+    value > MOTION_OFFSET.BIO_CONTAINER_HOLDUP_Y ? 0 : 1
+  )
+
   return (
     <Center type="fixed">
       <Center
@@ -52,6 +59,33 @@ const WelcomeFixedMotion = () => {
           gap: '2rem',
         }}
       >
+        <motion.div
+          css={{
+            position: 'absolute',
+            right: 0,
+            top: 0,
+            margin: '1rem',
+          }}
+          initial={{ translateY: 0 }}
+          whileInView={{
+            translateY: '10px',
+          }}
+          transition={{
+            repeat: Infinity,
+            repeatType: 'loop',
+            duration: 1,
+            repeatDelay: 1,
+          }}
+          style={{ opacity: scrollNavOpacity }}
+        >
+          <Text
+            css={{
+              color: theme.colors.white,
+            }}
+          >
+            ↓ 스크롤하여 진행해주세요!
+          </Text>
+        </motion.div>
         <motion.div style={{ scale: containerScale }}>
           <motion.div
             style={{ opacity: mainTitleOpacity }}
@@ -63,8 +97,11 @@ const WelcomeFixedMotion = () => {
             <Text
               css={{
                 color: theme.colors.white,
-                fontSize: '8rem',
                 textAlign: 'center',
+                fontSize: '4rem',
+                '@media (min-width: 768px)': {
+                  fontSize: '8rem',
+                },
               }}
             >
               안녕하세요!
@@ -80,9 +117,12 @@ const WelcomeFixedMotion = () => {
           >
             <Text
               css={{
-                color: 'white',
-                fontSize: '2.5rem',
+                color: theme.colors.white,
                 textAlign: 'center',
+                fontSize: '1.5rem',
+                '@media (min-width: 768px)': {
+                  fontSize: '2.5rem',
+                },
               }}
             >
               FE개발자 최근원입니다
@@ -94,16 +134,31 @@ const WelcomeFixedMotion = () => {
   )
 }
 
-const BioFixedMotion = () => {
+type BioFixedMotionProps = {
+  sectionMethods: SectionMethodsType
+}
+const BioFixedMotion = ({ sectionMethods }: BioFixedMotionProps) => {
   const { scrollY } = useScroll()
   const theme = useTheme()
+  const innerHeight = useRef(0)
 
   /** container motion styles */
-  const containerTranslateY = useTransform(scrollY, (value) =>
-    value > MOTION_OFFSET.BIO_CONTAINER_HOLDUP_Y
-      ? MOTION_OFFSET.BIO_CONTAINER_HOLDUP_Y - value
+  const containerTranslateY = useTransform(scrollY, (value) => {
+    const correctionOffset = innerHeight.current / 2 - 350
+
+    return value > MOTION_OFFSET.BIO_CONTAINER_HOLDUP_Y - correctionOffset
+      ? MOTION_OFFSET.BIO_CONTAINER_HOLDUP_Y - value - correctionOffset
       : 0
-  )
+  })
+
+  useEffect(() => {
+    innerHeight.current = window.innerHeight
+
+    window.addEventListener('resize', () => {
+      innerHeight.current = window.innerHeight
+      window.scrollBy(0, 0)
+    })
+  }, [containerTranslateY])
 
   /** main title motion styles */
   const mainTitleOpacity = useTransform(
@@ -165,12 +220,16 @@ const BioFixedMotion = () => {
               display: 'flex',
               justifyContent: 'center',
             }}
+            layout="position"
           >
             <Text
               css={{
                 color: theme.colors.white,
-                fontSize: '4rem',
+                fontSize: '3rem',
                 textAlign: 'center',
+                '@media (min-width: 768px)': {
+                  fontSize: '4rem',
+                },
               }}
             >
               FE개발자 최근원
@@ -186,9 +245,12 @@ const BioFixedMotion = () => {
           >
             <Text
               css={{
-                color: 'white',
-                fontSize: '2rem',
+                color: theme.colors.white,
                 textAlign: 'center',
+                fontSize: '1.125rem',
+                '@media (min-width: 768px)': {
+                  fontSize: '2rem',
+                },
               }}
             >
               {
@@ -222,7 +284,7 @@ const BioFixedMotion = () => {
                 paddingRight: '1rem',
                 cursor: 'pointer',
                 ':hover': {
-                  backgroundColor: 'white',
+                  backgroundColor: theme.colors.white,
                   transition: 'background-color 350ms ease-in-out',
                   span: {
                     transition: 'color 350ms ease-in-out',
@@ -230,10 +292,11 @@ const BioFixedMotion = () => {
                   },
                 },
               }}
+              onClick={() => sectionMethods.scrollToSection(2)}
             >
               <span
                 css={{
-                  color: 'white',
+                  color: theme.colors.white,
                   fontSize: '1rem',
                 }}
               >
@@ -247,7 +310,13 @@ const BioFixedMotion = () => {
   )
 }
 
-function IntroSection() {
+type IntroSectionProps = {
+  sectionMethods: SectionMethodsType
+}
+const IntroSection: ForwardRefRenderFunction<
+  HTMLDivElement,
+  IntroSectionProps
+> = ({ sectionMethods }) => {
   const theme = useTheme()
 
   return (
@@ -259,9 +328,9 @@ function IntroSection() {
       }}
     >
       <WelcomeFixedMotion />
-      <BioFixedMotion />
+      <BioFixedMotion sectionMethods={sectionMethods} />
     </Section>
   )
 }
 
-export default IntroSection
+export default forwardRef(IntroSection)

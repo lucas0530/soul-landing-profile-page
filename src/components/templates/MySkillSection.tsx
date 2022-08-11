@@ -30,6 +30,9 @@ import IconJira from '@public/static/logo/skills/jira-confluence.png'
 import IconRedhat from '@public/static/logo/skills/redhat.png'
 import { Interpolation } from '@emotion/styled'
 import { CSSObject, Theme, useTheme } from '@emotion/react'
+import SectionTitle from '@components/organisms/SectionTitle'
+import { forwardRef, ForwardRefRenderFunction } from 'react'
+import { SectionMethodsType } from 'pages'
 
 type SkillItemProps = {
   src: string | StaticImageData
@@ -72,7 +75,7 @@ const FrontendSection = () => {
     <section>
       <div
         css={{
-          backgroundColor: 'white',
+          backgroundColor: theme.colors.white,
           padding: '2rem',
           borderRadius: '1rem',
           display: 'flex',
@@ -289,7 +292,7 @@ const BackendSection = () => {
     <section>
       <div
         css={{
-          backgroundColor: 'white',
+          backgroundColor: theme.colors.white,
           padding: '2rem',
           borderRadius: '1rem',
           display: 'flex',
@@ -384,7 +387,7 @@ const MobileSection = () => {
     <section>
       <div
         css={{
-          backgroundColor: 'white',
+          backgroundColor: theme.colors.white,
           padding: '2rem',
           borderRadius: '1rem',
           display: 'flex',
@@ -450,7 +453,7 @@ const DeploymentSection = () => {
     <section>
       <div
         css={{
-          backgroundColor: 'white',
+          backgroundColor: theme.colors.white,
           padding: '2rem',
           borderRadius: '1rem',
           display: 'flex',
@@ -516,7 +519,7 @@ const CommunitySection = () => {
     <section>
       <div
         css={{
-          backgroundColor: 'white',
+          backgroundColor: theme.colors.white,
           padding: '2rem',
           borderRadius: '1rem',
           display: 'flex',
@@ -600,7 +603,7 @@ const ExtraSection = () => {
     <section>
       <div
         css={{
-          backgroundColor: 'white',
+          backgroundColor: theme.colors.white,
           padding: '2rem',
           borderRadius: '1rem',
           display: 'flex',
@@ -641,9 +644,17 @@ const ExtraSection = () => {
   )
 }
 
-const MySkillSection = () => {
+type MySkillSectionProps = {
+  sectionMethods: SectionMethodsType
+}
+
+const MySkillSection: ForwardRefRenderFunction<
+  HTMLDivElement,
+  MySkillSectionProps
+> = ({ sectionMethods }, ref) => {
   return (
     <Section
+      ref={ref}
       css={{
         justifyContent: 'center',
         alignItems: 'flex-start',
@@ -657,33 +668,11 @@ const MySkillSection = () => {
           flex: 1,
         }}
       >
-        <motion.div
-          initial={{ translateY: 0, opacity: 0 }}
-          whileInView={{
-            translateY: -20,
-            opacity: 1,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            delay: 0.5,
-            x: { duration: 1 },
-            default: { ease: 'linear' },
-          }}
-        >
-          <Text
-            css={{
-              fontWeight: 'bold',
-              fontSize: '4rem',
-              borderBottomColor: 'black',
-              borderBottomWidth: 2,
-              borderBottomStyle: 'solid',
-            }}
-          >
-            SKILLS
-          </Text>
-        </motion.div>
+        <SectionTitle
+          title="SKILLS"
+          onClickScrollClip={() => sectionMethods.scrollToSection(2)}
+        />
+
         <motion.div
           css={{
             display: 'flex',
@@ -706,28 +695,39 @@ const MySkillSection = () => {
             default: { ease: 'linear' },
           }}
         >
-          <FrontendSection />
           <div
             css={{
               display: 'flex',
-              flexDirection: 'column',
               gap: '2rem',
+              flexDirection: 'column',
+              '@media (min-width: 1200px)': {
+                flexDirection: 'row',
+              },
             }}
           >
-            <BackendSection />
-            <MobileSection />
-            <DeploymentSection />
-          </div>
+            <FrontendSection />
 
-          <div
-            css={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '2rem',
-            }}
-          >
-            <CommunitySection />
-            <ExtraSection />
+            <div
+              css={{
+                display: 'flex',
+                gap: '2rem',
+                flexDirection: 'column',
+              }}
+            >
+              <BackendSection />
+              <MobileSection />
+              <DeploymentSection />
+            </div>
+            <div
+              css={{
+                display: 'flex',
+                gap: '2rem',
+                flexDirection: 'column',
+              }}
+            >
+              <CommunitySection />
+              <ExtraSection />
+            </div>
           </div>
         </motion.div>
       </Center>
@@ -735,4 +735,4 @@ const MySkillSection = () => {
   )
 }
 
-export default MySkillSection
+export default forwardRef(MySkillSection)
