@@ -6,15 +6,14 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-a {
-  color: inherit;
+* {
+  box-sizing: border-box;
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+a {
+  color: #258ddb
 }
-
 span {
   font-family: AppleSDGothic;
 }
