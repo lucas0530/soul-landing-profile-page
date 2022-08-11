@@ -292,7 +292,7 @@ const BioFixedMotion = ({ sectionMethods }: BioFixedMotionProps) => {
                   },
                 },
               }}
-              onClick={() => sectionMethods.scrollToSection(2)}
+              onClick={() => sectionMethods.scrollToSection(1)}
             >
               <span
                 css={{
