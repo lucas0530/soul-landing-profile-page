@@ -127,12 +127,20 @@ const ProjectSection: ForwardRefRenderFunction<
                 gap: '2rem',
                 marginTop: '3rem',
                 width: '100%',
+                alignItems: 'center',
                 maxWidth: '71.25rem',
+                flexDirection: 'column',
+                '@media (min-width: 800px)': {
+                  flexDirection: 'row',
+                },
               }}
             >
               <div
                 css={{
-                  width: '50%',
+                  width: '100%',
+                  '@media (min-width: 800px)': {
+                    width: '50%',
+                  },
                 }}
               >
                 <Swiper
@@ -142,8 +150,6 @@ const ProjectSection: ForwardRefRenderFunction<
                     delay: 3000,
                   }}
                   loop
-                  onSlideChange={() => console.log('slide change')}
-                  onSwiper={(swiper) => console.log(swiper)}
                   navigation
                   pagination={{ clickable: true }}
                 >
@@ -197,7 +203,14 @@ const ProjectSection: ForwardRefRenderFunction<
                   </SwiperSlide>
                 </Swiper>
               </div>
-              <div>
+              <div
+                css={{
+                  width: '100%',
+                  '@media (min-width: 800px)': {
+                    width: '50%',
+                  },
+                }}
+              >
                 <div>
                   <Text>
                     아하 서비스는{' '}
