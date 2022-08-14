@@ -6,6 +6,7 @@ import MySkillSection from '@components/templates/MySkillSection'
 import ArchivingSection from '@components/templates/ArchivingSection'
 import CareerSection from '@components/templates/CareerSection'
 import { useCallback, useMemo, useRef } from 'react'
+import ProjectSection from '@components/templates/ProjectSection'
 
 export type SectionMethodsType = {
   scrollToSection: (index: number) => void
@@ -17,6 +18,7 @@ const Home: NextPage = () => {
   const MySkillSectionRef = useRef<HTMLDivElement>(null)
   const ArchivingSectionRef = useRef<HTMLDivElement>(null)
   const CareerSectionRef = useRef<HTMLDivElement>(null)
+  const ProjectSectionRef = useRef<HTMLDivElement>(null)
 
   const scrollToSection = useCallback((index: number) => {
     console.log(index)
@@ -38,6 +40,10 @@ const Home: NextPage = () => {
         return CareerSectionRef.current?.scrollIntoView({
           behavior: 'smooth',
         })
+      case 5:
+        return ProjectSectionRef.current?.scrollIntoView({
+          behavior: 'smooth',
+        })
     }
   }, [])
 
@@ -57,6 +63,7 @@ const Home: NextPage = () => {
         ref={ArchivingSectionRef}
         sectionMethods={sectionMethods}
       />
+      <ProjectSection ref={ProjectSectionRef} sectionMethods={sectionMethods} />
       <CareerSection ref={CareerSectionRef} sectionMethods={sectionMethods} />
     </main>
   )
