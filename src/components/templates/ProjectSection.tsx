@@ -11,6 +11,7 @@ import Image from 'next/image'
 import ProjectAha1 from '@public/static/images/project-aha-1.png'
 import ProjectAha2 from '@public/static/images/project-aha-2.png'
 import ProjectAha3 from '@public/static/images/project-aha-3.png'
+import ProjectAha4 from '@public/static/images/project-aha-4.png'
 import Divider from '@components/atoms/Divider'
 import androidMarket from '@public/static/logo/market/google-play.svg'
 import iosMarket from '@public/static/logo/market/apple-store.png'
@@ -137,6 +138,10 @@ const ProjectSection: ForwardRefRenderFunction<
                 <Swiper
                   spaceBetween={50}
                   slidesPerView={1}
+                  autoplay={{
+                    delay: 3000,
+                  }}
+                  loop
                   onSlideChange={() => console.log('slide change')}
                   onSwiper={(swiper) => console.log(swiper)}
                   navigation
@@ -176,6 +181,18 @@ const ProjectSection: ForwardRefRenderFunction<
                       }}
                     >
                       <Image src={ProjectAha3} />
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <div
+                      css={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        userSelect: 'none',
+                      }}
+                    >
+                      <Image src={ProjectAha4} />
                     </div>
                   </SwiperSlide>
                 </Swiper>
