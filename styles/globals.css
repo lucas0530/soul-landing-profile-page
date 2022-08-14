@@ -27,3 +27,10 @@ span {
     background: black;
   }
 }
+.swiper-slide {
+  width: 100% !important;
+}
+
+:root {
+  --swiper-navigation-size: 28px !important
+}
