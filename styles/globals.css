@@ -6,13 +6,16 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-a {
-  color: inherit;
+* {
+  box-sizing: border-box;
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+a {
+  color: #258ddb
+}
+span {
+  font-family: AppleSDGothic;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +26,11 @@ a {
     color: white;
     background: black;
   }
+}
+.swiper-slide {
+  width: 100% !important;
+}
+
+:root {
+  --swiper-navigation-size: 28px !important
 }
