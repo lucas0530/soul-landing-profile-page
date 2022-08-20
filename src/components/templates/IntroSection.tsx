@@ -6,7 +6,7 @@ import { SectionMethodsType } from 'pages'
 import { forwardRef, ForwardRefRenderFunction, useEffect, useRef } from 'react'
 import { Section } from './IntroSection.style'
 
-const PAGE_HEIGHT = 4000
+export const INTRO_SECTION_PAGE_HEIGHT = 4000
 const MOTION_OFFSET = {
   WELCOME_CONTAINER_SCALE: [0, 900],
   WELCOME_MAIN_TITLE_OPACITY: [700, 900],
@@ -62,8 +62,7 @@ const WelcomeFixedMotion = () => {
         <motion.div
           css={{
             position: 'absolute',
-            right: 0,
-            top: 0,
+            top: 150,
             margin: '1rem',
           }}
           initial={{ translateY: 0 }}
@@ -248,6 +247,7 @@ const BioFixedMotion = ({ sectionMethods }: BioFixedMotionProps) => {
                 color: theme.colors.white,
                 textAlign: 'center',
                 fontSize: '1.125rem',
+                whiteSpace: 'break-spaces',
                 '@media (min-width: 768px)': {
                   fontSize: '2rem',
                 },
@@ -316,14 +316,15 @@ type IntroSectionProps = {
 const IntroSection: ForwardRefRenderFunction<
   HTMLDivElement,
   IntroSectionProps
-> = ({ sectionMethods }) => {
+> = ({ sectionMethods }, ref) => {
   const theme = useTheme()
 
   return (
     <Section
+      ref={ref}
       css={{
         backgroundColor: theme.colors.black,
-        height: PAGE_HEIGHT,
+        height: INTRO_SECTION_PAGE_HEIGHT,
         position: 'relative',
       }}
     >

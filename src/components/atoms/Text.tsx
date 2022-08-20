@@ -1,14 +1,21 @@
 import React, { HTMLAttributes } from 'react'
-import { Span } from './Text.style'
+import { HTMLMotionProps, motion } from 'framer-motion'
 
 export type TextProps = React.PropsWithChildren<
   {
     bold?: boolean
-  } & HTMLAttributes<HTMLSpanElement>
+  } & HTMLMotionProps<'span'>
 >
 
-const Text = ({ children, ...props }: TextProps) => (
-  <Span {...props}>{children}</Span>
+const Text = ({ children, bold, ...props }: TextProps) => (
+  <motion.span
+    css={{
+      fontWeight: bold ? 'bold' : 'normal',
+    }}
+    {...props}
+  >
+    {children}
+  </motion.span>
 )
 
 export default Text
