@@ -21,7 +21,6 @@ const Home: NextPage = () => {
   const ProjectSectionRef = useRef<HTMLDivElement>(null)
 
   const scrollToSection = useCallback((index: number) => {
-    console.log(index)
     switch (index) {
       case 0:
       case 1:
