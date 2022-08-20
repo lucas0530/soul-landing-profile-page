@@ -19,8 +19,10 @@ import ProjectPort4 from '@public/static/images/project-port-4.png'
 import ProjectPort5 from '@public/static/images/project-port-5.png'
 import Divider from '@components/atoms/Divider'
 import androidMarket from '@public/static/logo/market/google-play.svg'
+// import close from '@public/static/icon/object/close.svg'
 import iosMarket from '@public/static/logo/market/apple-store.png'
 import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper'
+// import Portal from '@components/atoms/Portal'
 
 type ProjectSectionProps = {
   sectionMethods: SectionMethodsType
@@ -220,6 +222,7 @@ const ProjectList = [
         description: (
           <a
             target="_blank"
+            rel="noopener noreferrer"
             href="https://github.com/KZ-Lucas/soul-landing-profile-page"
           >
             https://github.com/KZ-Lucas/soul-landing-profile-page
@@ -279,6 +282,7 @@ const ProjectSection: ForwardRefRenderFunction<
 
         {ProjectList.map((project) => (
           <motion.div
+            key={project.title}
             initial={{ translateY: 0, opacity: 0 }}
             whileInView={{
               translateY: -20,
@@ -357,7 +361,7 @@ const ProjectSection: ForwardRefRenderFunction<
                     pagination={{ clickable: true }}
                   >
                     {project.imageList.map((image) => (
-                      <SwiperSlide>
+                      <SwiperSlide key={image.src}>
                         <div
                           css={{
                             display: 'flex',
@@ -366,7 +370,7 @@ const ProjectSection: ForwardRefRenderFunction<
                             userSelect: 'none',
                           }}
                         >
-                          <Image src={image} />
+                          <Image src={image} alt={image.src} />
                         </div>
                       </SwiperSlide>
                     ))}
@@ -403,6 +407,7 @@ const ProjectSection: ForwardRefRenderFunction<
                     >
                       {project.subDescription.map(({ title, description }) => (
                         <div
+                          key={title}
                           css={{
                             display: 'flex',
                           }}
@@ -425,6 +430,49 @@ const ProjectSection: ForwardRefRenderFunction<
           </motion.div>
         ))}
       </Center>
+      {/* <Portal>
+        <Center
+          id="TEST"
+          css={{
+            height: '100%',
+            width: '100%',
+            position: 'fixed',
+            top: 0,
+          }}
+        >
+          <div
+            css={{
+              height: '100%',
+              width: '100%',
+              backgroundColor: 'white',
+              position: 'relative',
+              padding: '3rem',
+            }}
+          >
+            <div
+              css={{
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                padding: '1rem',
+              }}
+            >
+              <Image
+                src={close}
+                width="28px"
+                height="28px"
+                onClick={() => {}}
+                css={{
+                  cursor: 'pointer',
+                }}
+              />
+            </div>
+            <div>
+              <Text>ㅁㄴㅇㅁㄴㅇㄴㅁㅇ</Text>
+            </div>
+          </div>
+        </Center>
+      </Portal> */}
     </Section>
   )
 }
