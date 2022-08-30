@@ -95,7 +95,7 @@ const ProjectList = [
             했으며, 현재 대대적인 마케팅을 통한 홍보를 진행 도중에 있습니다.
           </Text>
         </div>
-        <div
+        {/* <div
           css={{
             marginTop: '1rem',
           }}
@@ -121,7 +121,7 @@ const ProjectList = [
               자세히 보기 (작업 중)
             </Text>
           </button>
-        </div>
+        </div> */}
       </>
     ),
     subDescription: [
