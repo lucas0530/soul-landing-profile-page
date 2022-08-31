@@ -99,8 +99,8 @@ const Home: NextPage = () => {
     { title: 'About Me', scrollIndex: 1 },
     { title: 'Skill', scrollIndex: 2 },
     { title: 'Archiving', scrollIndex: 3 },
-    { title: 'Career', scrollIndex: 4 },
     { title: 'Project', scrollIndex: 5 },
+    { title: 'Career', scrollIndex: 4 },
   ]
   return (
     <main
@@ -197,8 +197,8 @@ const Home: NextPage = () => {
         ref={ArchivingSectionRef}
         sectionMethods={sectionMethods}
       />
-      <CareerSection ref={CareerSectionRef} sectionMethods={sectionMethods} />
       <ProjectSection ref={ProjectSectionRef} sectionMethods={sectionMethods} />
+      <CareerSection ref={CareerSectionRef} sectionMethods={sectionMethods} />
     </main>
   )
 }
