@@ -17,6 +17,10 @@ import ProjectPort2 from '@public/static/images/project-port-2.png'
 import ProjectPort3 from '@public/static/images/project-port-3.png'
 import ProjectPort4 from '@public/static/images/project-port-4.png'
 import ProjectPort5 from '@public/static/images/project-port-5.png'
+import ProjectDame1 from '@public/static/images/project-dame-1.png'
+import ProjectDame2 from '@public/static/images/project-dame-2.png'
+import ProjectDame3 from '@public/static/images/project-dame-3.png'
+
 import Divider from '@components/atoms/Divider'
 import androidMarket from '@public/static/logo/market/google-play.svg'
 // import close from '@public/static/icon/object/close.svg'
@@ -243,6 +247,79 @@ const ProjectList = [
             <SkillTag title="Framer" />
             <SkillTag title="Emotion" />
             <SkillTag title="AWS" />
+          </div>
+        ),
+      },
+    ],
+  },
+
+  {
+    title: 'Dame Da Ne meme generator',
+    subTitle: '2020.10 - 2020.10 (1人)',
+    imageList: [ProjectDame3, ProjectDame1, ProjectDame2],
+    description: (
+      <>
+        <div>
+          <Text>
+            전세계적으로 유행중인 다메다메 밈(Dame Da Ne meme)을 이미지 한장을
+            통해 원버튼으로 만들 수 있도록 하여, 수 많은 분들에게 사랑을 받을 수
+            있었던 개인 프로젝트입니다.
+            <br />
+            딥페이크 API를 활용해 정적인 이미지가 다메다메 밈 원 동영상처럼
+            움직일 수 있도록 하였습니다.
+            <br />
+            또한 i18n을 통해 해외의 유저분들도 쉽게 이용하실 수 있도록
+            개발했습니다.
+            <br />
+            <br />
+            GPU 연산을 필요로 하는 무거운 작업이라, 동시 접속자가 일정 이상
+            모이게 되었을 때 서버 성능이 느려지는 것을 방지하기 위해, AWS의
+            Simple Queue Service(SQS)를 적극 활용하였습니다.
+            <br />
+            <br />
+            많게는 하루에 700명 이상의 사용자와 1700번의 이상의 페이지뷰를
+            기록했으며, 평균 세션 시간 9분을 기록했습니다.
+            <br />
+            평균 세션 시간을 이용해 카카오 애드핏을 활용, 많게는 하루에 5만번
+            이상의 광고요청수를 기록했습니다.
+            <br />
+            <br />
+            최종적으로는 기업의 도움을 받아, 부담됐던 서버비를 줄일 수 있게
+            되었습니다.
+          </Text>
+        </div>
+      </>
+    ),
+    subDescription: [
+      { title: '주요 기능', description: <Text>다메다메 밈 제작</Text> },
+      {
+        title: 'URL',
+        description: (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.youtube.com/watch?v=UlFRB3F8TyE"
+          >
+            초등학생 유투버가 녹화한 동작 영상 #1
+          </a>
+        ),
+      },
+      {
+        title: '기술 스택',
+        description: (
+          <div
+            css={{
+              display: 'flex',
+              gap: '0.25rem',
+              flexWrap: 'wrap',
+            }}
+          >
+            <SkillTag title="NextJS" />
+            <SkillTag title="Koa" />
+            <SkillTag title="Socket.IO" />
+            <SkillTag title="SQS" />
+            <SkillTag title="S3" />
+            <SkillTag title="EC2" />
           </div>
         ),
       },
