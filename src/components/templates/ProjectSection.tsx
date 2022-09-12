@@ -20,6 +20,12 @@ import ProjectPort5 from '@public/static/images/project-port-5.png'
 import ProjectDame1 from '@public/static/images/project-dame-1.png'
 import ProjectDame2 from '@public/static/images/project-dame-2.png'
 import ProjectDame3 from '@public/static/images/project-dame-3.png'
+import ProjectBm1 from '@public/static/images/project-bm-1.jpg'
+import ProjectBm2 from '@public/static/images/project-bm-2.jpg'
+import ProjectBm3 from '@public/static/images/project-bm-3.jpg'
+import ProjectBm4 from '@public/static/images/project-bm-4.jpg'
+import ProjectBm5 from '@public/static/images/project-bm-5.jpg'
+import ProjectBm6 from '@public/static/images/project-bm-6.jpg'
 
 import Divider from '@components/atoms/Divider'
 import androidMarket from '@public/static/logo/market/google-play.svg'
@@ -330,6 +336,73 @@ const ProjectList = [
             <SkillTag title="SQS" />
             <SkillTag title="S3" />
             <SkillTag title="EC2" />
+          </div>
+        ),
+      },
+    ],
+  },
+
+  {
+    title: 'Behavior Monitoring',
+    subTitle: '2019.05 - 2019.11 (1人)',
+    imageList: [
+      ProjectBm1,
+      ProjectBm2,
+      ProjectBm3,
+      ProjectBm4,
+      ProjectBm5,
+      ProjectBm6,
+    ],
+    description: (
+      <>
+        <div>
+          <Text>
+            경쟁력이 떨어지는 기존 자사 제품의 UI를 대체하기 위해 BootStrap
+            Template에 기반에 새롭게 작성한 웹 애플리케이션입니다.
+            <br />
+            해당 웹 애플리케이션은 Agent Driver가 설치된 OS의 파일, 프로세스,
+            네트워크에 대한 모든 생성 및 변경, 요청 등의 액션을 수집하고, 이를
+            토대로 의심 행동을 나타내어주는 기능을 제공합니다.
+            <br />
+            <br />웹 애플리케이션 개발을 배우기 시작하면서 초기에 진행된
+            프로젝트로, 당시 BootStrap Template 저작권을 구매하여 MPA 기반의 웹
+            애플리케이션을 설계했습니다.
+            <br />
+            <br />
+            당시 PHP로 서비스되던 웹 애플리케이션의 경우 블로킹 I/O로 인해 UX에
+            치명적이었고, 이를 해결하기 위해 기존 쿼리를 수행하던 PHP 코드를
+            NodeJS 코드로 마이그레이션을 진행하면서 백엔드 개발 또한 함께
+            진행하였습니다.
+            <br />
+            <br />
+            실제로 개발된 웹 애플리케이션이 기관에 납품되는 등 실적을 얻을 수
+            있던 프로젝트였습니다.
+          </Text>
+        </div>
+      </>
+    ),
+    subDescription: [
+      {
+        title: '주요 기능',
+        description: (
+          <Text>
+            내부자에 의한 정보유출 행위 및 외부 침입자의 해킹 행위에 대한
+            모니터링
+          </Text>
+        ),
+      },
+      {
+        title: '기술 스택',
+        description: (
+          <div
+            css={{
+              display: 'flex',
+              gap: '0.25rem',
+              flexWrap: 'wrap',
+            }}
+          >
+            <SkillTag title="JQuery" />
+            <SkillTag title="Express" />
           </div>
         ),
       },
