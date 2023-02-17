@@ -254,7 +254,7 @@ const BioFixedMotion = ({ sectionMethods }: BioFixedMotionProps) => {
               }}
             >
               {
-                '기본에 충실해지고 싶은 3년차 개발자입니다.\n프론트 전반에 걸쳐 지식에 대한 열망이 아주 강합니다.'
+                '기본에 충실해지고 싶은 4년차 개발자입니다.\n프론트 전반에 걸쳐 지식에 대한 열망이 아주 강합니다.'
               }
             </Text>
           </motion.div>
