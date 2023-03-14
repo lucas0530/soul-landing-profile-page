@@ -101,7 +101,7 @@ const CareerList: CareerItemType[] = [
           </div>
         </div>
       ),
-      period: ['2021.07', ''],
+      period: ['2021.07', '2022-12-16'],
       bio: (
         <>
           (주) 더코퍼레이션은{' '}
