@@ -4,6 +4,8 @@ import { Section } from './IntroSection.style'
 import { motion } from 'framer-motion'
 import { useTheme } from '@emotion/react'
 import IconPlayauto from '@public/static/logo/skills/playauto.png'
+import IconRidi from '@public/static/logo/skills/ridi.png'
+
 import IconAha from '@public/static/logo/skills/aha.png'
 import Image from 'next/image'
 import Divider from '@components/atoms/Divider'
@@ -27,6 +29,52 @@ type CareerItemType = {
 }
 
 const CareerList: CareerItemType[] = [
+  {
+    company: {
+      title: '리디 (리디북스)',
+      imageComponent: (
+        <div
+          css={{
+            backgroundColor: 'white',
+            borderRadius: '100%',
+            width: '250px',
+            height: '250px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            border: '1px solid #ccc',
+          }}
+        >
+          <div
+            css={{
+              position: 'absolute',
+              width: '12rem',
+            }}
+          >
+            <Image src={IconRidi} />
+          </div>
+        </div>
+      ),
+      period: ['2023.02', ''],
+      bio: (
+        <>
+          리디 (리디북스)는 웹툰, 웹소설, 만화, 전자책 등을 서비스하는 콘텐츠
+          플랫폼입니다.
+          <br />
+          <Text bold>
+            1,000만 이상의 월간활성사용자수(MAU)를 보유하고 있습니다.
+          </Text>
+        </>
+      ),
+      subbio: (
+        <>
+          기본적으로는 프론트엔드 포지션으로 리디 전체 서비스의 신규 개발 및
+          유지보수를 담당하고 있습니다.
+        </>
+      ),
+    },
+    projectList: [],
+  },
   {
     company: {
       title: '(주) 더코퍼레이션 (아하)',
