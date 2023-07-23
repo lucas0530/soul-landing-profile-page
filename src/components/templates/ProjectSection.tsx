@@ -233,9 +233,9 @@ const ProjectList = [
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://github.com/KZ-Lucas/soul-landing-profile-page"
+            href="https://github.com/lucas0530/soul-landing-profile-page"
           >
-            https://github.com/KZ-Lucas/soul-landing-profile-page
+            https://github.com/lucas0530/soul-landing-profile-page
           </a>
         ),
       },

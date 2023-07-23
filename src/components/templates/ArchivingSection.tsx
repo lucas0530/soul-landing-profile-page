@@ -78,7 +78,7 @@ const ArchivingSection: ForwardRefRenderFunction<
             <motion.div
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              onClick={() => window.open('https://github.com/KZ-Lucas')}
+              onClick={() => window.open('https://github.com/lucas0530')}
               css={{
                 backgroundColor: '#f5f5f5',
                 padding: '2rem',
@@ -107,9 +107,9 @@ const ArchivingSection: ForwardRefRenderFunction<
                   css={{
                     whiteSpace: 'nowrap',
                   }}
-                  href="https://github.com/KZ-Lucas"
+                  href="https://github.com/lucas0530"
                 >
-                  github.com/KZ-Lucas
+                  github.com/lucas0530
                 </a>
               </div>
 
