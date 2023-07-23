@@ -62,7 +62,7 @@ const CareerList: CareerItemType[] = [
           플랫폼입니다.
           <br />
           <Text bold>
-            1,000만 이상의 월간활성사용자수(MAU)를 보유하고 있습니다.
+            2,200만 이상의 월간활성사용자수(MAU)를 보유하고 있습니다.
           </Text>
         </>
       ),
