@@ -1,14 +1,27 @@
 import React, { HTMLAttributes } from 'react'
-import { Span } from './Text.style'
+import { HTMLMotionProps, motion } from 'framer-motion'
+import { useTheme } from '@emotion/react'
 
 export type TextProps = React.PropsWithChildren<
   {
     bold?: boolean
-  } & HTMLAttributes<HTMLSpanElement>
+  } & HTMLMotionProps<'span'>
 >
 
-const Text = ({ children, ...props }: TextProps) => (
-  <Span {...props}>{children}</Span>
-)
+const Text = ({ children, bold, ...props }: TextProps) => {
+  const theme = useTheme()
 
+  return (
+    <motion.span
+      css={{
+        fontWeight: bold ? 'bold' : 'normal',
+        whiteSpace: 'break-spaces',
+        color: theme.colors.black,
+      }}
+      {...props}
+    >
+      {children}
+    </motion.span>
+  )
+}
 export default Text
