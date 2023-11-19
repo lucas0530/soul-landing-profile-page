@@ -105,7 +105,7 @@ const CareerList: CareerItemType[] = [
           </div>
         </div>
       ),
-      period: ['2023.02', ''],
+      period: ['2023.02', '2023.11'],
       bio: (
         <>
           리디 (리디북스)는 웹툰, 웹소설, 만화, 전자책 등을 서비스하는 콘텐츠
